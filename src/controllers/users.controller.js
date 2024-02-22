@@ -4,7 +4,7 @@ const HelperFunctions = require("../helper");
 const bcrypt = require("bcrypt");
 
 class UsersController extends BaseController {
-  async usersListing(req, res) {
+  usersListing = async (req, res) => {
     try {
       const users = await models.Users.findAll({
         attributes: { exclude: ["password"] },
@@ -14,9 +14,9 @@ class UsersController extends BaseController {
       console.log("error", error);
       return this.response(res, 500, "Something went wrong");
     }
-  }
+  };
 
-  async userByID(req, res) {
+  userByID = async (req, res) => {
     try {
       const id = req.params.id;
       const user = await models.Users.findByPk(id, {
@@ -30,9 +30,9 @@ class UsersController extends BaseController {
       console.log("error", error);
       return this.response(res, 500, "Something went wrong");
     }
-  }
+  };
 
-  async createUser(req, res) {
+  createUser = async (req, res) => {
     try {
       const { email } = req.body;
       const user = await models.Users.findOne({ where: { email } });
@@ -47,9 +47,9 @@ class UsersController extends BaseController {
       console.log("error", error);
       return this.response(res, 500, "Something went wrong");
     }
-  }
+  };
 
-  async updateUser(req, res) {
+  updateUser = async (req, res) => {
     try {
       const id = req.params.id;
       const { email } = req.body;
@@ -69,9 +69,9 @@ class UsersController extends BaseController {
       console.log("error", error);
       return this.response(res, 500, "Something went wrong");
     }
-  }
+  };
 
-  async deleteUser(req, res) {
+  deleteUser = async (req, res) => {
     try {
       const id = req.params.id;
       const user = await models.Users.findByPk(id);
@@ -84,7 +84,7 @@ class UsersController extends BaseController {
       console.log("error", error);
       return this.response(res, 500, "Something went wrong");
     }
-  }
+  };
 }
 
 module.exports = UsersController;

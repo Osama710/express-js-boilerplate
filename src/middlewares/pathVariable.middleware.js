@@ -3,7 +3,7 @@ const HelperFunctions = require("../helper");
 class PathVariableMiddleware {
   async handle(req, res, next) {
     try {
-      const { id, slug, uuid } = request.params;
+      const { id, slug, uuid } = req.params;
       // if (!id) {
       //   return HelperFunctions.responseWrapper(
       //     res,
@@ -28,8 +28,7 @@ class PathVariableMiddleware {
         : null;
       if (!valid) {
         return HelperFunctions.responseWrapper(
-          request,
-          reply,
+          res,
           400,
           "Invalid parameter provided."
         );

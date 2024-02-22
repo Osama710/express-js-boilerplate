@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 const getIP = require("ipware")();
 
 class AuthenticationController extends BaseController {
-  async login(req, res) {
+  login = async (req, res) => {
     try {
       const { email, password } = req.body;
       const user = await models.Users.findOne({
@@ -25,7 +25,8 @@ class AuthenticationController extends BaseController {
         });
 
         if (failedLoginAttempts && failedLoginAttempts.length >= 3) {
-          const latestFailedAttemptTimestamp = failedLoginAttempts[0].created_at;
+          const latestFailedAttemptTimestamp =
+            failedLoginAttempts[0].created_at;
           const currentTimestamp = new Date();
           const fiveMinutesAgo = new Date(
             currentTimestamp.getTime() - 5 * 60 * 1000
@@ -35,7 +36,7 @@ class AuthenticationController extends BaseController {
               res,
               400,
               "Too many failed login attempts. Please try again later."
-            )
+            );
           }
         }
 
@@ -54,25 +55,25 @@ class AuthenticationController extends BaseController {
             user_id: user.id,
             ip_address: clientIp,
           });
-          return this.response(res, 400, "Invalid email or password")
+          return this.response(res, 400, "Invalid email or password");
         }
       } else {
-        return this.response(res, 400, "Invalid email or password")
+        return this.response(res, 400, "Invalid email or password");
       }
     } catch (error) {
       console.log("error", error);
-      return this.response(res, 500, "Something went wrong")
+      return this.response(res, 500, "Something went wrong");
     }
-  }
-  async protectedFunction(req, res) {
+  };
+  protectedFunction = async (req, res) => {
     try {
-      return this.response(res, 200, {}, "Hello World!!!!")
+      return this.response(res, 200, {}, "Hello World!!!!");
     } catch (error) {
       console.log("Error occurred: ", error);
-      return this.response(res, 500, "Something went wrong")
+      return this.response(res, 500, "Something went wrong");
     }
-  }
-  async migrate(req, res) {
+  };
+  migrate = async (req, res) => {
     try {
       await models.Users.sync();
       await models.FailedLoginAttempt.sync();
@@ -95,12 +96,12 @@ class AuthenticationController extends BaseController {
         200,
         {},
         `DB created, permissions added successfully.`
-      )
+      );
     } catch (error) {
       console.log("error", error);
-      return this.response(res, 500, error.message)
+      return this.response(res, 500, error.message);
     }
-  }
+  };
 }
 
 module.exports = AuthenticationController;
