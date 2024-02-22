@@ -32,14 +32,16 @@ Follow these steps to set up and run the project locally:
   cd express-boilerplate
 
 3. Install dependencies:
-  ```npm install
+  ```bash
+   npm install
 
 4. Create a .env file based on the provided .env.example and configure your environment variables, including database credentials and JWT secret key.
 
 5. create a database express_boilerplate and then run api /migrate to create tables.
 
 6. Start the server:
-  ``` nodemon
+ ```bash
+ nodemon
 
 ## API Documentation
 
