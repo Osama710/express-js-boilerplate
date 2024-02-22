@@ -25,12 +25,12 @@ Follow these steps to set up and run the project locally:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/express-boilerplate.git
+   git clone https://github.com/yourusername/express-js-boilerplate.git
 
 2. Navigate to the project directory:
 
    ```bash
-   cd express-boilerplate
+   cd express-js-boilerplate
 
 3. Install dependencies:
 
@@ -49,12 +49,12 @@ Follow these steps to set up and run the project locally:
 
 Explore the API endpoints and their functionalities:
 
-- **POST /register**: Register a new user.
+- **POST /user**: Register a new user.
 - **POST /login**: Authenticate user and generate JWT token.
 - **GET /users**: Get all users.
-- **GET /users/:id**: Get user by ID.
-- **PUT /users/:id**: Update user by ID.
-- **DELETE /users/:id**: Delete user by ID.
+- **GET /user/:id**: Get user by ID.
+- **PUT /user/:id**: Update user by ID.
+- **DELETE /user/:id**: Delete user by ID.
 - **POST /migrate**: Run database migration to create tables.
 
 For detailed information on each endpoint, refer to the API documentation or inspect the codebase.
